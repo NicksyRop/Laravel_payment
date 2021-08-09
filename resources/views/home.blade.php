@@ -28,6 +28,26 @@
                             </div>
 
                         </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <label for="platform">Select payment platform</label>
+                                <div class="form-group">
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        @foreach($payemntPlatforms as $platform)
+
+                                            <label for="" class="btn btn-outline-secondary rounded m-2 p-1">
+
+                                                <input type="radio" name="payment_platform" id="" value="{{$platform->id}}">
+                                                <img src="{{asset($platform->image)}}" class="img-thumbnail" alt="payment image">
+                                            </label>
+
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="text-center mt-3">
                             <button type="submit" class="btn btn-primary" id="payButton">Pay</button>
 

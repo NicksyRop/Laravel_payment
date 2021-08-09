@@ -17,7 +17,7 @@ class PayementSeeder extends Seeder
         PaymentPlatform::create([
 
             'name' => 'Paypal',
-            'image' => 'images/payal.jpg'
+            'image' => 'images/paypal.jpg'
 
         ]);
         PaymentPlatform::create([
