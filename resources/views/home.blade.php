@@ -13,8 +13,18 @@
                             <div class="col-auto">
 
                                 <label for="amount">How much do you want to pay?</label>
-                                <input type="number" name="value" class="form-control" min="5" step="0.01" value="{{ mt_rand(5,10000)}}" id="">
+                                <input type="number" name="value" class="form-control" min="5" step="0.01" value="{{ mt_rand(5,10000)}}" id="" required>
 
+                            </div>
+
+                            <div class="col-auto">
+                                <label for="select">Currency</label>
+                                <select name="currency" id="" class="form-control">
+                                    @foreach ($currencies as $currency)
+                                    <option value="{{ $currency->iso}}">{{ strtoupper($currency->iso)}}</option>
+                                    @endforeach
+
+                                </select>
                             </div>
 
                         </div>
