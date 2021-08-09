@@ -12,6 +12,6 @@ class Currency extends Model
     protected $primaryky = 'iso';
     public $incrementing = false;
     protected $fillable = [
-        'iso',
-    ]
+        'iso'
+    ];
 }
