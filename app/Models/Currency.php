@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Currency extends Model
 {
     use HasFactory;
+
+    protected $primaryky = 'iso';
+    public $incrementing = false;
+    protected $fillable = [
+        'iso',
+    ]
 }
