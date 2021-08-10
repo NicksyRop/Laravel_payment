@@ -29,8 +29,22 @@ class PaymentController extends Controller
 
             'value'=> 'required|min:5|numeric',
             'currency' => 'required|exists:currencies,iso',
-            'payment_platform' => 'required|exist:payment_platform,id'
+             'payment_platform' => 'required|exists:payment_platforms,id'
         ]);
 
+        return $request->all();
+
     }
+
+        public function cancel(){
+
+            //
+        }
+        public function approve(){
+
+            //
+        }
+
+
+
 }

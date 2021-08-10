@@ -7,13 +7,16 @@
             <div class="card">
                 <div class="card-header">Make Payement</div>
                 <div class="card-body">
-                    <form action="" method="POST" id="paymentForm">
+                    <form action="{{ route('pay')}}" method="POST" id="paymentForm">
                         @csrf
                         <div class="row">
                             <div class="col-auto">
 
                                 <label for="amount">How much do you want to pay?</label>
-                                <input type="number" name="value" class="form-control" min="5" step="0.01" value="{{ mt_rand(5,10000)}}" id="" required>
+                                <input type="number" name="value" class="form-control" min="5" step="0.01" value="{{ mt_rand(5,10000)}}" id="" >
+                                @error('value')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
 
                             </div>
 
@@ -25,6 +28,9 @@
                                     @endforeach
 
                                 </select>
+                                @error('currency')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div>
@@ -32,18 +38,23 @@
                             <div class="col">
                                 <label for="platform">Select payment platform</label>
                                 <div class="form-group" id="toggle">
-                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <div  data-toggle="buttons">
                                         @foreach($payemntPlatforms as $platform)
 
                                             <label for="" class="btn btn-outline-secondary rounded m-2 p-1" data-target="#{{$platform->name}}Collapse" data-toggle="collapse">
 
-                                                <input type="radio" name="payment_platform" id="" value="{{$platform->id}}">
+                                                <input type="radio" name="payment_platform" id="" for="{{$platform->name}}" value="{{$platform->id}}"  >
                                                 <img src="{{asset($platform->image)}}" class="img-thumbnail" alt="payment image">
                                             </label>
 
                                         @endforeach
 
                                     </div>
+                                    @error('payment_platform')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+
+                                    @enderror
+
 
                                     @foreach ($payemntPlatforms as $platform)
                                         <div id="{{$platform->name}}Collapse" class="collapse" data-parent="#toggle">
